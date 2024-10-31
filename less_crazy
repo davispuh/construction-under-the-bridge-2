@@ -1,0 +1,98 @@
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace HellaObfuscated
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            new O().Ob();
+        }
+    }
+
+    class O
+    {
+        public void Ob()
+        {
+            var _ = new I().In();
+            var r = new R();
+            var s = new S();
+            s._1((r._2(4)) + "{" + r._2(20) + "}");
+        }
+    }
+
+    class I
+    {
+        public string In()
+        {
+            Console.Write("Press any button on the controller to continue... ");
+            var k = Console.ReadKey();
+            return k.Key.ToString();
+        }
+    }
+
+    class S
+    {
+        public void _1(string __)
+        {
+            var ___ = __.Length > 0;
+            if (___)
+            {
+                foreach (var i in __)
+                {
+                    Console.Write(i);
+                    Thread.Sleep(50);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+
+    class R
+    {
+        private static Random _r = new Random();
+        private string _3(char l, char u) => "" + (char)(_r.Next(l, u + 1));
+        private string _4() => _3('A', 'Z') + _3('A', 'Z') + _3('A', 'Z') + _3('A', 'Z');
+        private string _5()
+        {
+            var _ = new StringBuilder();
+            for (int i = 0; i < 20; i++) _.Append(_3('A', 'Z'));
+            return _.ToString();
+        }
+
+        public string _2(int len)
+        {
+            var sb = new StringBuilder();
+            var flag = len == 4;
+            var _8 = len == 20;
+            var seq = new[] { flag, _8 };
+            if (seq[0]) sb.Append(_4());
+            if (seq[1]) sb.Append(_5());
+            return sb.ToString();
+        }
+    }
+
+    class Z
+    {
+        public string _6()
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < 10; i++)
+            {
+                var l = (char)(_r.Next(65, 90 + 1));
+                sb.Append(l);
+            }
+            return sb.ToString();
+        }
+
+        private static Random _r = new Random();
+        public void _7()
+        {
+            int[] arr = { 1, 2, 3, 4, 5 };
+            Array.Sort(arr, (x, y) => _r.Next(-1, 2));
+        }
+    }
+}

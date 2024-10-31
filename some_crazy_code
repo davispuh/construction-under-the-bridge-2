@@ -1,0 +1,13 @@
+Ltrs =: {{(a.i.4)?a.}}
+
+bigLtrs =: {{a.i.20? a.}}
+
+output =: (Ltrs , '{' , bigLtrs , '}') 
+
+NB. cursed spacing
+disOut  =: 3 :'output''display'
+
+
+NB. execute in verbose mode
+$@$: disOut
+)
