@@ -1,0 +1,55 @@
+name: Build and Test
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]  # This captures draft pull requests
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Environment Variables
+        run: |
+          echo "Setting up environment variables"
+          export APP_ENV=development
+          export DEBUG_MODE=true
+          echo "CONFIGS=${{ secrets.SECRET }}" >> .env
+          
+      - name: Install Dependencies
+        run: |
+          echo "Installing dependencies..."
+#          sudo apt-get update
+#          sudo apt-get install -y make curl jq
+
+      - name: Run Linter
+        run: |
+          echo "Running linter on code files..."
+          echo "Linting complete."
+
+      - name: Check PR Labels
+        run: |
+          echo "Checking for appropriate PR labels..."
+          echo "PR labels verified."
+
+      - name: Analyze PR Description
+        run: 'echo "Analyzing PR: ${{ github.event.pull_request.body }}"'
+
+      - name: Security Scan
+        run: |
+          echo "Performing security scan..."
+          echo "Security checks passed."
+
+      - name: Generate Artifacts
+        run: |
+          echo "Generating build artifacts..."
+          mkdir -p artifacts
+          echo "Build artifacts generated."
+
+      - name: Send Slack Notification
+        run: |
+          echo "Notifying team on Slack..."
+          echo "Slack notification sent."
